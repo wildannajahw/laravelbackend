@@ -21,4 +21,8 @@ Route::match(["GET", "POST"], "/register", function(){
 })->name("register");
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource("users","UserController");
+Route::get('/categories/{id}/restore', 'CategoryController@restore')->name('categories.restore');
+Route::get('/categories/trash', 'CategoryController@trash')->name('categories.trash');
+Route::get('/ajax/categories/search','CategoryController@ajaxSearch');
 Route::resource('categories', 'CategoryController');
+Route::resource('products', 'ProductController');

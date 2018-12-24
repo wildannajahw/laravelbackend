@@ -13,7 +13,7 @@
     <input type="text" class="form-control" name="name"/>
     <br>
     <label>Category image</label>
-    <input type="file" class="form-control" name="image"/>
+    <input type="file" class="form-control" name="image" v/>
     <br>
     <input type="submit" class="btn btn-primary" value="Save"/>
   </form>

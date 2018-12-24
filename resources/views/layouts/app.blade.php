@@ -30,6 +30,7 @@
     <link href="{{ asset('css/waypoints.css') }}" rel="stylesheet">
 </head>
 <body>
+
     <div id="app">
         <nav class="navbar navbar-expand-sm navbis">
                 <ul class="navbar-nav">
@@ -80,6 +81,8 @@
                                     </form>
                                     <a href="#" class="dropdown-item">Profile</a>
                                     <a href="#" class="dropdown-item">Setting</a>
+                                    <a href="{{route('users.index')}}"class="dropdown-item">Manage users</a>
+                                    <a href="{{route('categories.index')}}"class="dropdown-item">Manage categories</a>
                                 </div>
                             </li>
                         @endguest
@@ -133,5 +136,6 @@
             <div class="contaier-fluid" id="garis"></div>
         </div>
     </div>
+      @yield('footer-scripts')
 </body>
 </html>
