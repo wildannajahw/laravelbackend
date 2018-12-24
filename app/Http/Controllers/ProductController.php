@@ -13,7 +13,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+      $products = \App\product::with('categories')->paginate(10);
+      return view('products.index', ['products'=> $products]);
     }
 
     /**
@@ -80,7 +81,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+      $product = \App\product::findOrFail($id);
+      return view('products.edit', ['product' => $product]);
     }
 
     /**
