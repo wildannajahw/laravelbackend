@@ -32,9 +32,9 @@ ajax: {
       <input type="text" class="form-control" name="convection" id="convection" placeholder="Convection"><br>
 
       <input type="number" class="form-control" name="price" id="price" placeholder="Product price"><br>
-      <label for="categories">Categories</label><br>
+      <!-- <label for="categories">Categories</label><br>
       <selectname="categories[]" multiple id="categories" class="form-control">
-      </select>
+      </select> -->
       <br><br>
       <button class="btn btn-primary" name="save_action" value="PUBLISH">Publish</button>
       <button class="btn btn-secondary" name="save_action" value="DRAFT">Save as draft</button>
