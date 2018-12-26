@@ -7,14 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
-{   
+{
 
-  public function __construct(){
-    $this->middleware(function($request, $next){
-      if(Gate::allows('manage-users')) return $next($request);
-      abort(403, 'Anda tidak memiliki cukup hak akses');
-    });
-  }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +32,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view("users.create");
+        return view("home");
     }
 
     /**
@@ -72,6 +67,7 @@ class UserController extends Controller
         $new_user->avatar = $file;
       }
       $new_user->save();
+      return redirect()->route('home')->with('status', 'User successfully created.');
     }
 
     /**
@@ -80,7 +76,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
     public function show($id)
     {
       $user = \App\User::findOrFail($id);

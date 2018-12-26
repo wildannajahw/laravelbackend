@@ -12,6 +12,7 @@
 */
 
 
+
 Route::get('/admin/register', function () {
     return view('admin.register');
 });

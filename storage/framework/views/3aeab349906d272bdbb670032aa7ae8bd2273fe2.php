@@ -80,10 +80,12 @@
                                     <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
                                         <?php echo csrf_field(); ?>
                                     </form>
-                                    <a href="#" class="dropdown-item">Profile</a>
-                                    <a href="#" class="dropdown-item">Setting</a>
+
+                                    <a class="dropdown-item" href="<?php echo e(route('users.edit', ['id'=>Auth::user()->id])); ?>">Profile</a>
                                     <?php if(Auth::user()->roles == "[\"ADMIN\"]" || Auth::user()->roles == "[\"STAFF\"]"): ?>
-                                      <a href="<?php echo e(route('users.index')); ?>"class="dropdown-item">Manage users</a>
+                                      <?php if(Auth::user()->roles== "[\"ADMIN\"]"): ?>
+                                        <a href="<?php echo e(route('users.index')); ?>"class="dropdown-item">Manage users</a>
+                                      <?php endif; ?>
                                       <a href="<?php echo e(route('products.index')); ?>"class="dropdown-item">Manage products</a>
                                       <a href="<?php echo e(route('orders.index')); ?>" class="dropdown-item">Manage orders</a>
 

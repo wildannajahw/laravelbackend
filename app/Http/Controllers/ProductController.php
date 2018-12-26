@@ -209,5 +209,10 @@ class ProductController extends Controller
     return view('products.create');
 
   }
+  public function usr($id)
+  {
+    $user = \App\User::findOrFail($id);
+    return view('users.show', ['user' => $user]);
+  }
 
 }

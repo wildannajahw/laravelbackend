@@ -79,10 +79,12 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                    <a href="#" class="dropdown-item">Profile</a>
-                                    <a href="#" class="dropdown-item">Setting</a>
+
+                                    <a class="dropdown-item" href="{{route('users.edit', ['id'=>Auth::user()->id])}}">Profile</a>
                                     @if(Auth::user()->roles == "[\"ADMIN\"]" || Auth::user()->roles == "[\"STAFF\"]")
-                                      <a href="{{route('users.index')}}"class="dropdown-item">Manage users</a>
+                                      @if(Auth::user()->roles== "[\"ADMIN\"]")
+                                        <a href="{{route('users.index')}}"class="dropdown-item">Manage users</a>
+                                      @endif
                                       <a href="{{route('products.index')}}"class="dropdown-item">Manage products</a>
                                       <a href="{{route('orders.index')}}" class="dropdown-item">Manage orders</a>
 
