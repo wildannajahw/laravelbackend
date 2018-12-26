@@ -11,10 +11,15 @@
     <?php echo csrf_field(); ?>
     <input type="hidden" value="PUT" name="_method">
     <label for="name">Name</label>
-    <input value="<?php echo e($user->name); ?>" class="form-control" placeholder="Full Name" type="text" name="name" id="name"/>
+    <input value="<?php echo e($user->name); ?>" class="form-control <?php echo e($errors->first('name') ? "is-invalid" : ""); ?>" placeholder="Full Name" type="text" name="name" id="name"/>
     <br>
     <label for="username">Username</label>
     <input value="<?php echo e($user->username); ?>" disabled class="form-control" placeholder="username" type="text" name="username" id="username"/>
+    <div class="invalid-feedback">
+<?php echo e($errors->first('name')); ?>
+
+</div>
+<br>
     <br>
     <label for="">Status</label>
     <br/>
@@ -36,10 +41,15 @@
     <br>
     <label for="phone">Phone number</label>
     <br>
-    <input  type="text"  name="phone"  class="form-control"  value="<?php echo e($user->phone); ?>">
+    <input  type="text"  name="phone"  class="form-control <?php echo e($errors->first('phone') ? "is-invalid" : ""); ?>"  value="<?php echo e($user->phone); ?>">
     <br>
     <label for="address">Address</label>
-    <textarea name="address"  id="address"  class="form-control"><?php echo e($user->address); ?>  </textarea>
+    <textarea name="address"  id="address"  class="form-control <?php echo e($errors->first('address') ? "is-invalid" : ""); ?>"><?php echo e($user->address); ?>  </textarea>
+<div class="invalid-feedback">
+<?php echo e($errors->first('address')); ?>
+
+</div>
+<br>
     <br>
     <label for="avatar">Avatar image</label>
     <br>
@@ -55,7 +65,12 @@
     <small class="text-muted">Kosongkan jika tidak ingin mengubah avatar</small>
     <hr  class="my-3">
     <label for="email">Email</label>
-    <input  value="<?php echo e($user->email); ?>"  disabled  class="form-control"  placeholder="user@mail.com"  type="text"  name="email"  id="email"/>
+    <input  value="<?php echo e($user->email); ?>"  disabled  class="form-control <?php echo e($errors->first('email') ? "is-invalid" : ""); ?>"  placeholder="user@mail.com"  type="text"  name="email"  id="email"/>
+    <div class="invalid-feedback">
+<?php echo e($errors->first('email')); ?>
+
+</div>
+<br>
     <br>
     <input  class="btn btn-primary"  type="submit"  value="Save"/>
   </form>

@@ -11,10 +11,6 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -23,6 +19,38 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $products = \App\Product::all();
+        return view('welcome', compact('products'));
     }
+    public function collection(Request $request)
+    {
+      $status = $request->get('status');
+      $keyword = $request->get('keyword') ? $request->get('keyword') : '';
+      if($status){
+
+        $products = \App\Product::all()->where('title', "LIKE","%$keyword%");
+      }
+      else{
+        $products = \App\Product::with('categories')->where("title", "LIKE","%$keyword%")->paginate(10);
+      }
+      return view('collection', compact('products'));
+      // $status = $request->get('status');
+      // $keyword = $request->get('keyword') ? $request->get('keyword') : '';
+      // if($status){
+      //   $products = \App\Product::all()->where('title', "LIKE","%$keyword%")->where('status', strtoupper($status));
+      // }
+      // else {
+      //   $products = \App\Product::all()->where("title", "LIKE","%$keyword%");
+      // }
+      // return view('collection', ['products' => $products]);
+      // if($status){
+      //   $products = \App\Product::all()->where('status',strtoupper($status));
+      // }
+      // else {
+      //   $products = \App\Product::all();
+      //   return view('collection',  compact('products'));
+      // }
+    }
+
+
 }

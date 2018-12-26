@@ -14,9 +14,17 @@
 
     <input type="hidden" value="PUT" name="_method">
     <label>Category name</label> <br>
-    <input type="text" class="form-control" value="{{$category->name}}" name="name"><br><br>
+    <input type="text" class="form-control {{$errors->first('name') ? "is-invalid" : ""}}" value="{{$category->name}}" name="name"><br><br>
+    <div class="invalid-feedback">
+{{$errors->first('name')}}
+</div>
+<br><br>
     <label>Cateogry slug</label>
-    <input type="text" class="form-control" value="{{$category->slug}}" name="slug"> <br><br>
+    <input type="text" class="form-control {{$errors->first('slug') ? "is-invalid" : ""}}" value="{{$category->slug}}" name="slug"> <br><br>
+    <div class="invalid-feedback">
+{{$errors->first('slug')}}
+</div>
+<br><br>
     <label>Category image</label><br>
 
     @if($category->image)
@@ -24,7 +32,11 @@
     <img src="{{asset('storage/'. $category->image)}}" width="120px"> <br><br>
 
     @endif
-    <input type="file" class="form-control" name="image">
+    <input type="file" class="form-control {{$errors->first('image') ? "is-invalid" : ""}}" name="image">
+    <div class="invalid-feedback">
+{{$errors->first('image')}}
+</div>
+<br><br>
     <small class="text-muted">Kosongkan jika tidak ingin mengubah gambar</small> <br><br>
     <input type="submit" class="btn btn-primary" value="Update">
   </form>

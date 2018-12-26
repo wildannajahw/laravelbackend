@@ -81,8 +81,12 @@
                                     </form>
                                     <a href="#" class="dropdown-item">Profile</a>
                                     <a href="#" class="dropdown-item">Setting</a>
-                                    <a href="{{route('users.index')}}"class="dropdown-item">Manage users</a>
-                                    <a href="{{route('categories.index')}}"class="dropdown-item">Manage categories</a>
+                                    @if(Auth::user()->roles == "[\"ADMIN\"]" || Auth::user()->roles == "[\"STAFF\"]")
+                                      <a href="{{route('users.index')}}"class="dropdown-item">Manage users</a>
+                                      <a href="{{route('products.index')}}"class="dropdown-item">Manage products</a>
+                                      <a href="{{route('orders.index')}}" class="dropdown-item">Manage orders</a>
+
+                                    @endif
                                 </div>
                             </li>
                         @endguest
@@ -110,7 +114,7 @@
                             <li style="color: grey; font-size: 100%">Help + Info</li>
                             <li><a href="">FAQ</a></li>
                             <li><a href="">Privacy Policy</a></li>
-                            <li><a href="/konveksi/login">Login as Convection</a></li>
+                            <li><a href="/admin/register">Register as Convection</a></li>
                             <li><a href="/contactus" style="color: white">Contact Us</a></li>
                         </ul>
                     </div>
@@ -118,13 +122,7 @@
                     <div class="col-sm-4">
                         <div class="footer navbar-expand-sm">
                             <ul style="list-style: none">
-                                <li style="color: grey">Follow Us</li>
-                                <li>
-                                    <a href="https://www.instagram.com/watclothes"><img src="images/ig.png" style="width:30px; height:30px"></a>
-                                    <a href=""><img src="images/fb.png" style="width:30px; height:30px; margin-left: 10px"></a>
-                                    <a href=""><img src="images/tw.png" style="width:40px; height:40px; margin-left: 8px"></a>
-                                    <a href=""><img src="images/yt.png" style="width:60px; height:60px;"></a>
-                                </li>
+
                             </ul>
                         </div>
                     </div>

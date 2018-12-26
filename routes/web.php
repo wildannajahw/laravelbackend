@@ -11,18 +11,25 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/admin/register', function () {
+    return view('admin.register');
 });
 
 Auth::routes();
-Route::match(["GET", "POST"], "/register", function(){
-  return redirect("/login");
-})->name("register");
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/collection', 'HomeController@collection')->name('collection');
 Route::resource("users","UserController");
 Route::get('/categories/{id}/restore', 'CategoryController@restore')->name('categories.restore');
 Route::get('/categories/trash', 'CategoryController@trash')->name('categories.trash');
 Route::get('/ajax/categories/search','CategoryController@ajaxSearch');
 Route::resource('categories', 'CategoryController');
+Route::get('/products/trash', 'ProductController@trash')->name('products.trash');
+Route::post('/products/{id}/restore', 'ProductController@restore')->name('products.restore');
+Route::post('/products/{id}/coba', 'ProductController@coba')->name('products.coba');
+Route::delete('/products/{id}/delete-permanent','ProductController@deletePermanent')->name('products.delete-permanent');
 Route::resource('products', 'ProductController');
+Route::resource('orders', 'OrderController');
+Route::resource('pesans', 'PesanController');

@@ -1,51 +1,54 @@
-@extends('layouts.global')
-@section('title') Edit book @endsection
+@extends('layouts.app')
+
+@section('title') Edit product @endsection
+
 @section('content')
-<div class="row">
   <div class="col-md-8">
     @if(session('status'))
     <div class="alert alert-success">
       {{session('status')}}
     </div>
     @endif
-    <form enctype="multipart/form-data" method="POST" action="{{route('books.update', ['id' => $book->id])}}" class="p-3 shadow-sm bg-white">
+    <form enctype="multipart/form-data" method="POST" action="{{route('products.update', ['id' => $product->id])}}" class="p-3 shadow-sm bg-white">
       @csrf
       <input type="hidden" name="_method" value="PUT">
       <label for="title">Title</label><br>
-      <input type="text" class="form-control" value="{{$book->title}}" name="title" placeholder="Book title"/><br>
+      <input type="text" class="form-control {{$errors->first('title') ? "is-invalid" : ""}}" value="{{$product->title}}" name="title" placeholder="Product title"/><br>
+      <div class="invalid-feedback">
+        {{$errors->first('title')}}
+      </div>
+      <br>
       <label for="cover">Cover</label><br>
       <small class="text-muted">Current cover</small><br>
-      @if($book->cover)
-      <img src="{{asset('storage/' . $book->cover)}}" width="96px"/>
+      @if($product->cover)
+      <img src="{{asset('storage/' . $product->cover)}}" width="96px"/>
       @endif
       <br><br>
-      <input type="file" class="form-control" name="cover">
+      <input type="file" class="form-control {{$errors->first('cover') ? "is-invalid" : ""}}" name="cover">
+      <div class="invalid-feedback">
+        {{$errors->first('cover')}}
+      </div>
+      <br>
       <small class="text-muted">Kosongkan jika tidak ingin mengubah cover</small>
       <br><br>
       <label for="slug">Slug</label><br>
-      <input type="text" class="form-control" value="{{$book->slug}}" name="slug" placeholder="enter-a-slug"/><br>
-      <label for="description">Description</label> <br>
-      <textarea name="description" id="description" class="form-control">{{$book->description}}</textarea><br>
-      <label for="categories">Categories</label>
-      <select multiple class="form-control" name="categories" id="categories"></select>
-      <br><br>
-      <label for="stock">Stock</label><br>
-      <input type="text" class="form-control" placeholder="Stock" id="stock" name="stock" value="{{$book->stock}}"><br>
-      <label for="author">Author</label>
-      <input placeholder="Author" value="{{$book->author}}" type="text" id="author" name="author" class="form-control"><br>
-      <label for="publisher">Publisher</label><br>
-      <input class="form-control" type="text" placeholder="Publisher" name="publisher" id="publisher" value="{{$book->publisher}}"><br>
+      <input type="text" class="form-control" value="{{$product->slug}}" name="slug" placeholder="enter-a-slug"/><br>
+      </select>
+      <br>
       <label for="price">Price</label><br>
-      <input type="text" class="form-control" name="price" placeholder="Price" id="price" value="{{$book->price}}"><br>
+      <input type="text" class="form-control {{$errors->first('price') ? "is-invalid" : ""}}" name="price" placeholder="Price" id="price" value="{{$product->price}}">
+      <div class="invalid-feedback">
+        {{$errors->first('price')}}
+      </div>
+      <br>
       <label for="">Status</label>
       <select name="status" id="status" class="form-control">
-        <option {{$book->status == 'PUBLISH' ? 'selected' : ''}} value="PUBLISH">PUBLISH</option>
-        <option {{$book->status == 'DRAFT' ? 'selected' : ''}} value="DRAFT">DRAFT</option>
+        <option {{$product->status == 'PUBLISH' ? 'selected' : ''}} value="PUBLISH">PUBLISH</option>
+        <option {{$product->status == 'DRAFT' ? 'selected' : ''}} value="DRAFT">DRAFT</option>
       </select><br>
       <button class="btn btn-primary" value="PUBLISH">Update</button>
     </form>
   </div>
-</div>
 
 @endsection
 @section('footer-scripts')
@@ -59,7 +62,7 @@
   }
 }
 });
-var categories = {!! $book->categories !!} categories.forEach(function(category){
+var categories = {!! $product->categories !!} categories.forEach(function(category){
   var option = new Option(category.name, category.id, true, true);
   $('#categories').append(option).trigger('change');
 });

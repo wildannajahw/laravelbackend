@@ -1,98 +1,75 @@
-<!doctype html>
-<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php $__env->startSection('content'); ?>
+<head>
+  <style media="screen">
+    .navbis{
+      background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.0));
+    }
+    .navbis:hover{
+        background-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,1));
+        border-bottom: solid 1px;
+        border-color: #bf9b30;
+        z-index: 2;
+    }
+  </style>
+</head>
+<div class="container">
+        <video src="videos/video.mp4" autoplay loop muted></video>
+    </div>
+    <div class="container-fluid" id="anjing">
+        <p class="text1">Introducing <br> the HolyShirt Collection</p>
+            <img src="images/models.jpg" alt="">
+        <p>We believe every body deserves to be celebrated, which is why we aim to fit everybody. At HolyShirt, you will never see the option to select a size on our website or find a size tag in your clothing. At HolyShirt we are building a size-free world.</p>
+        <p class="text1">
+            Our Collection
+        </p>
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            <?php if(Route::has('login')): ?>
-                <div class="top-right links">
-                    <?php if(auth()->guard()->check()): ?>
-                        <a href="<?php echo e(url('/home')); ?>">Home</a>
-                    <?php else: ?>
-                        <a href="<?php echo e(route('login')); ?>">Login</a>
-
-                        <?php if(Route::has('register')): ?>
-                            <a href="<?php echo e(route('register')); ?>">Register</a>
-                        <?php endif; ?>
-                    <?php endif; ?>
-                </div>
+        <div class="row" id="asd">
+          <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <?php if($product->status != "DRAFT"): ?>
+          <div class="col-sm-3">
+          <a href="<?php echo e(route('products.show', ['id' => $product->id])); ?>">
+            <?php if($product->cover): ?>
+              <img src="<?php echo e(asset('storage/' . $product->cover)); ?>" width="100%"/>
             <?php endif; ?>
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+            <p class="tb"><br><?php echo e($product->title); ?></p>
+            <p>Rp. <?php echo e($product->price); ?></p>
+          </a>
+          </div>
+          <?php endif; ?>
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </div>
+        <a href="/collection" class="linkcol"> See the collection </a>
+        <div class="row" id="asd">
+            <div class="col-sm-8">
+                <h2>We love shapes, not sizes.</h2>
+                <h4>We make clothes custom-fit to you and ship them directly to your door.</h4>
+            </div>
+            <div class="col-sm-4">
+                <img src="images/dualipa.jpg" alt="">
             </div>
         </div>
-    </body>
-</html>
+        <h3 style="margin-top: 5%;">It's All In The Details</h3>
+        <h4 style="margin-bottom: 5%">We adjust every detail according to your measurements.</h4>
+        <div class="row" id="asd">
+            <div class="col-sm-4">
+                <img src="images/1.jpg" alt="" width="100%">
+                <p class="tc"><br>Natural fabrics chosen for maximum comfort.</p>
+            </div>
+            <div class="col-sm-4">
+                <img src="images/2.jpg" alt="">
+                <p class="tc"><br>Clean and sophisticated t-shirts fit for any occassion.</p>
+            </div>
+            <div class="col-sm-4">
+                <img src="images/3.jpg" alt="">
+                <p class="tc"><br>A timeless Oxford with modern touches.</p>
+            </div>
+            <h2 style="padding: 10% 0 2% 10% ">
+                Custom-Fit To You
+            </h2>
+            <h4 style="padding: 0 40% 0 10%; text-align: left">
+                Customize each item's fit according to your style preferences. Go looser for a more relaxed style, or shorten the length for something cropped. Customize as much or as little as you like at no extra cost.
+            </h4>
+        </div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
