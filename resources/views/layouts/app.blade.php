@@ -81,6 +81,9 @@
                                     </form>
 
                                     <a class="dropdown-item" href="{{route('users.edit', ['id'=>Auth::user()->id])}}">Profile</a>
+                                    @if(Auth::user()->roles== "[\"CUSTOMER\"]")
+                                      <a href="{{route('orders.index')}}" class="dropdown-item">Manage orders</a>
+                                    @endif
                                     @if(Auth::user()->roles == "[\"ADMIN\"]" || Auth::user()->roles == "[\"STAFF\"]")
                                       @if(Auth::user()->roles== "[\"ADMIN\"]")
                                         <a href="{{route('users.index')}}"class="dropdown-item">Manage users</a>

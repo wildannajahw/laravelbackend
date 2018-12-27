@@ -15,12 +15,14 @@ class CreatePesansTable extends Migration
     {
         Schema::create('pesans', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->string('user_id');
+            $table->string('user_email');
             $table->integer('product_id');
             $table->integer('staff_id');
             $table->integer('price');
             $table->string('convection');
             $table->string('cover');
+            $table->text("address");
             $table->string('title');
             $table->enum('status', ['SUBMIT', 'PROCESS', 'FINISH','CANCEL']);
             $table->timestamps();

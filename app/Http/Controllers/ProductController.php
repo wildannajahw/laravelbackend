@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
-    public function __construct(){
-      $this->middleware(function($request, $next){
-        if(Gate::allows('manage-products')) return $next($request);
-        abort(403, 'Anda tidak memiliki cukup hak akses');
-      });
-    }
+    // public function __construct(){
+    //   $this->middleware(function($request, $next){
+    //     if(Gate::allows('manage-products')) return $next($request);
+    //     abort(403, 'Anda tidak memiliki cukup hak akses');
+    //   });
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -197,7 +197,8 @@ class ProductController extends Controller
 
     $new_pesan = new \App\Pesan;
     $product = \App\Product::findOrFail($id);
-    $new_pesan->user_id = \Auth::user()->id;
+    $new_pesan->user_id = \Auth::user()->name;
+    $new_pesan->user_email = \Auth::user()->email;
     $new_pesan->product_id = $request->get('product_id');
     $new_pesan->staff_id =  $request->get('staff_id');
     $new_pesan->price = $request->get('price');
@@ -205,6 +206,7 @@ class ProductController extends Controller
     $new_pesan->cover = $request->get('cover');
     $new_pesan->title = $request->get('title');
     $new_pesan->status = 'SUBMIT';
+    $new_pesan->address = \Auth::user()->address;
     $new_pesan->save();
     return view('products.create');
 
