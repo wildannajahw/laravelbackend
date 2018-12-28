@@ -82,11 +82,11 @@
                                     </form>
 
                                     <a class="dropdown-item" href="<?php echo e(route('users.edit', ['id'=>Auth::user()->id])); ?>">Profile</a>
-                                    <?php if(Auth::user()->roles== "[\"CUSTOMER\"]"): ?>
-                                      <a href="<?php echo e(route('orders.index')); ?>" class="dropdown-item">Manage orders</a>
+                                    <?php if(Auth::user()->roles == "[\"CUSTOMER\"]"): ?>
+                                      <a href="<?php echo e(route('orders.index')); ?>" class="dropdown-item">Orders</a>
                                     <?php endif; ?>
                                     <?php if(Auth::user()->roles == "[\"ADMIN\"]" || Auth::user()->roles == "[\"STAFF\"]"): ?>
-                                      <?php if(Auth::user()->roles== "[\"ADMIN\"]"): ?>
+                                      <?php if(Auth::user()->roles == "[\"ADMIN\"]"): ?>
                                         <a href="<?php echo e(route('users.index')); ?>"class="dropdown-item">Manage users</a>
                                       <?php endif; ?>
                                       <a href="<?php echo e(route('products.index')); ?>"class="dropdown-item">Manage products</a>

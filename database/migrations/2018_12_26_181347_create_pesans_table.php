@@ -15,6 +15,8 @@ class CreatePesansTable extends Migration
     {
         Schema::create('pesans', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->string('user_name');
             $table->string('user_id');
             $table->string('user_email');
             $table->integer('product_id');

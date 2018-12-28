@@ -18,24 +18,21 @@
     <div class="invalid-feedback">
 {{$errors->first('name')}}
 </div>
-<br>
-    <br>
-    <label for="">Status</label>
-    <br/>
-    <input {{$user->status == "ACTIVE" ? "checked" : ""}} value="ACTIVE" type="radio" class="form-control" id="active"name="status">
-    <label for="active">Active</label>
-    <input {{$user->status == "INACTIVE" ? "checked" : ""}} value="INACTIVE" type="radio" class="form-control" id="inactive" name="status">
-    <label for="inactive">Inactive</label>
-    <br><br>
-    <label for="">Roles</label>
-    <br>
-    <input type="checkbox" {{in_array("ADMIN", json_decode($user->roles)) ? "checked" : ""}} name="roles[]" id="ADMIN" value="ADMIN">
-      <label for="ADMIN">Administrator</label>
-    <input
-    type="checkbox" {{in_array("STAFF", json_decode($user->roles)) ?  "checked" : ""}}  name="roles[]"  id="STAFF"  value="STAFF">
-    <label for="STAFF">Staff</label>
-    <input  type="checkbox" {{in_array("CUSTOMER", json_decode($user->roles)) ?  "checked" : ""}}  name="roles[]"  id="CUSTOMER"  value="CUSTOMER">
-    <label for="CUSTOMER">Customer</label>
+    <!-- <label for="">Status</label> -->
+
+    <input {{$user->status == "ACTIVE" ? "checked" : ""}} value="ACTIVE" type="hidden" class="form-control" id="active"name="status">
+    <!-- <label for="active">Active</label> -->
+    <input {{$user->status == "INACTIVE" ? "checked" : ""}} value="INACTIVE" type="hidden" class="form-control" id="inactive" name="status">
+    <!-- <label for="inactive">Inactive</label> -->
+
+    <!-- <label for="">Roles</label> -->
+
+    <!-- <input type="hidden" {{in_array("ADMIN", json_decode($user->roles)) ? "checked" : ""}} name="roles[]" id="ADMIN" value="ADMIN"> -->
+      <!-- <label for="ADMIN">Administrator</label> -->
+    <!-- <input type="hidden" {{in_array("STAFF", json_decode($user->roles)) ?  "checked" : ""}}  name="roles[]"  id="STAFF"  value="STAFF"> -->
+    <!-- <label for="STAFF">Staff</label> -->
+    <!-- <input  type="hidden" {{in_array("CUSTOMER", json_decode($user->roles)) ?  "checked" : ""}}  name="roles[]"  id="CUSTOMER"  value="CUSTOMER"> -->
+    <!-- <label for="CUSTOMER">Customer</label> -->
     <br>
     <br>
     <label for="phone">Phone number</label>

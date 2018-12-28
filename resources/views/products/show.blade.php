@@ -15,7 +15,7 @@
                 <h1>Rp. {{$product->price}}</h1>
                 <br>
                 <br>
-                <form action="{{route('products.coba', ['id' => $product->id ])}}" method="POST" enctype="multipart/form-data" class="shadow-sm p-3 bg-white">
+                <form action="{{route('products.coba', ['id' => $product->id ])}}" method="POST" enctype="multipart/form-data" class="">
                   @csrf
                   <input  type="hidden" id="price" value="{{$product->price}}" name="price">
                   <input  type="hidden" id="cover" value="{{$product->cover}}" name="cover">

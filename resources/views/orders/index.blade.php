@@ -33,24 +33,32 @@
         @endif
       </td>
       <td>{{$pesan->title}}</td>
-      <td>{{$pesan->user_id}}</td>
+      <td><a href="{{route('users.show', ['id' => $pesan->user_id])}}" class="btn btn-primary btn-sm" style="text-decoration: none">{{$pesan->user_name}}</a></td>
       <td>{{$pesan->user_email}}</td>
       <td>{{$pesan->address}}</td>
       <td>{{$pesan->price}}</td>
       <td>
         @if($pesan->status == "SUBMIT")
         <span class="badge bg-warning text-light">{{$pesan->status}}</span>
-        @elseif($order->status == "PROCESS")
+        @elseif($pesan->status == "PROCESS")
         <span class="badge bg-info text-light">{{$pesan->status}}</span>
-        @elseif($order->status == "FINISH")
+        @elseif($pesan->status == "FINISH")
         <span class="badge bg-success text-light">{{$pesan->status}}</span>
-        @elseif($order->status == "CANCEL")
+        @elseif($pesan->status == "CANCEL")
         <span class="badge bg-dark text-light">{{$pesan->status}}</span>
         @endif
       </td>
 
       <td>
-        <a href="#" class="btn btn-info btn-sm"> Edit</a>
+        <form action="{{route('products.proses', ['id' => $pesan->id ])}}" method="POST" enctype="multipart/form-data" class="">
+          @csrf
+          <button type="submit" class="btn-sm">Process</button>
+        </form>
+        <br>
+        <form action="{{route('products.finish', ['id' => $pesan->id ])}}" method="POST" enctype="multipart/form-data" class="">
+          @csrf
+          <button type="submit" class="btn-sm btn-danger">Finish</button>
+        </form>
       </td>
     </tr>
       @endif
@@ -70,7 +78,7 @@
     </thead>
     <tbody>
       @foreach($pesans as $pesan)
-        @if($pesan->user_id == Auth::user()->name)
+        @if($pesan->user_id == Auth::user()->id)
       <tr>
         <td>
           @if($pesan->cover)

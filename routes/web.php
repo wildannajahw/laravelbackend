@@ -13,6 +13,9 @@
 
 
 
+Route::post('/products/{id}/proses', 'ProductController@proses')->name('products.proses');
+
+Route::post('/products/{id}/finish', 'ProductController@finish')->name('products.finish');
 Route::get('/admin/register', function () {
     return view('admin.register');
 });

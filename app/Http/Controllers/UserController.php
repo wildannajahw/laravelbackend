@@ -61,6 +61,10 @@ class UserController extends Controller
       $new_user->address = $request->get('address');
       $new_user->phone = $request->get('phone');
       $new_user->email = $request->get('email');
+      $new_user->lebar_dada = $request->get('lebar_dada');
+      $new_user->tangan_pendek = $request->get('tangan_panjang');
+      $new_user->tangan_pendek = $request->get('tangan_pendek');
+      $new_user->tinggi = $request->get('tinggi');
       $new_user->password = \Hash::make($request->get('password'));
       if($request->file('avatar')){
         $file = $request->file('avatar')->store('avatars', 'public');
@@ -116,6 +120,10 @@ class UserController extends Controller
       $user->roles = json_encode($request->get('roles'));
       $user->address = $request->get('address');
       $user->phone = $request->get('phone');
+      $user->lebar_dada = $request->get('lebar_dada');
+      $user->tangan_pendek = $request->get('tangan_panjang');
+      $user->tangan_pendek = $request->get('tangan_pendek');
+      $user->tinggi = $request->get('tinggi');
       if($user->avatar && file_exists(storage_path('app/public/' . $user->avatar))){
         \Storage::delete('public/'.$user->avatar);
         $file = $request->file('avatar')->store('avatars', 'public');

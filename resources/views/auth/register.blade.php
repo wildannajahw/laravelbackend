@@ -83,6 +83,56 @@
                     </div>
                     <br>
                 </div>
+                <table style="width:75%;margin-left: 10%;font-size: 30px;">
+                  <tr>
+                    <th>Size</th>
+                    <th>Lebar Dada</th>
+                    <th>Tangan Panjang</th>
+                    <th>Tangan Pendek</th>
+                    <th>Tinggi</th>
+                  </tr>
+                  <tr>
+                    <td>S</td>
+                    <td>48</td>
+                    <td>58</td>
+                    <td>25</td>
+                    <td>68</td>
+                  </tr>
+                  <tr>
+                    <td>M</td>
+                    <td>50</td>
+                    <td>59</td>
+                    <td>26</td>
+                    <td>70</td>
+                  </tr>
+                  <tr>
+                    <td>L</td>
+                    <td>54</td>
+                    <td>60</td>
+                    <td>27</td>
+                    <td>72</td>
+                  </tr>
+                    <td>XL</td>
+                    <td>54</td>
+                    <td>61</td>
+                    <td>28</td>
+                    <td>74</td>
+                </table>
+
+
+                <div class="form-group d-flex justify-content-center">
+                    <input id="lebar_dada" type="lebar_dada" class="form-control" name="lebar_dada" placeholder="lebar dada">
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <input id="tangan_panjang" type="tangan_panjang" class="form-control" name="tangan_panjang" placeholder="tangan panjang">
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <input id="tangan_pendek" type="tangan_pendek" class="form-control" name="tangan_pendek" placeholder="tangan pendek">
+                </div>
+
+                <div class="form-group d-flex justify-content-center">
+                    <input id="lebar_dada" type="tinggi" class="form-control" name="tinggi" placeholder="tinggi">
+                </div>
                 <button type="submit" class="btn">Register</button>
             </form>
             <h4>Already have an account? <a href="/login" style="color:#202020">Login Here</a></h4>

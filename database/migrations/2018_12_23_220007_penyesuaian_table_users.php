@@ -19,6 +19,10 @@ class PenyesuaianTableUsers extends Migration
           $table->text("address");
           $table->string("phone");
           $table->string("avatar");
+          $table->integer('lebar_dada')->nullable();
+          $table->integer('tangan_panjang')->nullable();
+          $table->integer('tangan_pendek')->nullable();
+          $table->integer('tinggi')->nullable();
           $table->enum("status",["ACTIVE", "INACTIVE"]);
         });
     }

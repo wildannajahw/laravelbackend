@@ -197,7 +197,8 @@ class ProductController extends Controller
 
     $new_pesan = new \App\Pesan;
     $product = \App\Product::findOrFail($id);
-    $new_pesan->user_id = \Auth::user()->name;
+    $new_pesan->user_name = \Auth::user()->name;
+    $new_pesan->user_id = \Auth::user()->id;
     $new_pesan->user_email = \Auth::user()->email;
     $new_pesan->product_id = $request->get('product_id');
     $new_pesan->staff_id =  $request->get('staff_id');
@@ -208,8 +209,21 @@ class ProductController extends Controller
     $new_pesan->status = 'SUBMIT';
     $new_pesan->address = \Auth::user()->address;
     $new_pesan->save();
-    return view('products.create');
-
+    return redirect()->route('orders.index')->with('status', 'Order succesfully submit!');
+  }
+  public function proses($id)
+  {
+    $product = \App\Pesan::findOrFail($id);
+    $product->status = 'PROCESS';
+    $product->save();
+    return redirect()->route('orders.index')->with('status', 'Order on process!');
+  }
+  public function finish($id)
+  {
+    $product = \App\Pesan::findOrFail($id);
+    $product->status = 'FINISH';
+    $product->save();
+    return redirect()->route('orders.index')->with('status', 'Order is finish!');
   }
   public function usr($id)
   {

@@ -20,7 +20,7 @@
         <div class="row" id="asd">
           @foreach($products as $product)
           <div class="col-sm-3">
-          <a href="#">
+          <a href="{{route('products.show', ['id' => $product->id])}}">
             @if($product->cover)
               <img src="{{asset('storage/' . $product->cover)}}" width="100%"/>
             @endif
